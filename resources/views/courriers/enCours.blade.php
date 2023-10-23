@@ -838,6 +838,40 @@
   
 
 
+<script>
+    // Fonction pour stocker l'onglet actif dans le stockage local
+    function storeActiveTab(tabId) {
+      localStorage.setItem('activeTab', tabId);
+    }
+    
+    // Fonction pour restaurer l'onglet actif depuis le stockage local
+    function restoreActiveTab() {
+      const activeTab = localStorage.getItem('activeTab');
+      if (activeTab) {
+        // Activer l'onglet actif
+        $('.note-link').removeClass('active');
+        $('#' + activeTab).addClass('active');
+        // Afficher le contenu de l'onglet actif
+        $('.single-note-item').hide();
+        $('.' + activeTab).show();
+      }
+    }
+    
+    // Écoutez les clics sur les onglets pour stocker l'onglet actif
+    $('.note-link').on('click', function () {
+      const tabId = $(this).attr('id');
+      storeActiveTab(tabId);
+    });
+    
+    // Restaurer l'onglet actif lors du chargement de la page
+    $(document).ready(function () {
+      restoreActiveTab();
+    });
+    
+    </script>
+    
+    
+
 
 
 

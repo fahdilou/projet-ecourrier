@@ -70,7 +70,7 @@ public function create_table(Request $request)
         ->latest()->limit(100);
 
       
-        /
+        
 
 return DataTables::eloquent($query)
 
