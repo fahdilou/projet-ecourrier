@@ -602,7 +602,7 @@ function enregistrerOrdre() {
 
 
 
-    //changer la valeur de libellé en temps reel
+    //changer la valeur de libellé en temps reels
     <script>
     document.getElementById('workflow').addEventListener('change', function() {
         var selectedOption = this.options[this.selectedIndex];
