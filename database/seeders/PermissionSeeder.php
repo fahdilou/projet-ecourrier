@@ -32,8 +32,33 @@ class PermissionSeeder extends Seeder
 
 
         Permission::create(['name' => 'onglet_metier']);
-        Permission::create(['name' => 'onglet_app']);
-        Permission::create(['name' => 'onglet_reportings']);
+
+        Permission::create(['name' => 'onglet_reporting']);
+   
+        Permission::create(['name' => 'onglet_courrier']);
+        Permission::create(['name' => 'onglet_courrier_create']);
+        Permission::create(['name' => 'onglet_courrier_suivi']);
+        Permission::create(['name' => 'onglet_courrier_traite']);
+        Permission::create(['name' => 'courrier_traitement']);
+        Permission::create(['name' => 'courrier_edition']);
+        Permission::create(['name' => 'courrier_delete']);
+        Permission::create(['name' => 'onglet_courrier_suivi_enregistrer']);
+        Permission::create(['name' => 'onglet_courrier_suivi_encour']);
+        Permission::create(['name' => 'onglet_courrier_suivi_traite']);
+
+
+        Permission::create(['name' => 'onglet_facture']);
+        Permission::create(['name' => 'onglet_facture_create']);
+        Permission::create(['name' => 'onglet_facture_suivi']);
+        Permission::create(['name' => 'onglet_facture_traite']);
+        Permission::create(['name' => 'facture_traitement']);
+        Permission::create(['name' => 'facture_edit']);
+        Permission::create(['name' => 'facture_delete']);
+        Permission::create(['name' => 'onglet_facture_suivi_enregistrer']);
+        Permission::create(['name' => 'onglet_facture_suivi_encour']);
+        Permission::create(['name' => 'onglet_facture_suivi_traite']);
+        
+        
         
 
 

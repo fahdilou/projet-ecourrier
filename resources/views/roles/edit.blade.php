@@ -2,18 +2,11 @@
 
 @section('content')
 
-
+<link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 
 <div class="container-xxl flex-grow-1 container-p-y">
 
-    <div class="row">
-        <div class="col">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Paramètres Systeme /</span> <a href="{{ route('roles.index') }}"> Rôles & Permissions </a> /  {{$role->name}} </h4>
-        </div>
-    
- 
-    
-    </div>
+   
 
     <!---------FIN BREADCRUMB------------------------------------------>
 
@@ -23,72 +16,71 @@
         {{-- <div class="container-fluid" mettre conatiner-fluid pour plus de largeur > --}}
         <div class="container-fluid">
 
-            <div class="main-card mb-3 card">
+            <div class="card">
                 <form action="{{ route('roles.update',$role->id) }}" method="POST"
-                    autocomplete="off">
-                    @method('put')
-                    @csrf
-                <div class="card-header">
-                    <i class="bi bi-person-lines-fill header-icon icon-gradient bg-plum-plate"> </i>
-                  Modification d'un rôle utilisateur
-  
-                </div>
+                autocomplete="off">
+                @method('put')
+                @csrf
+                <div class="card-header"> Modification d'un rôle utilisateur</div>
                 <div class="card-body">
                     <div class="scroll-area-lg">
-                        <div class="scrollbar-container ps--active-y ps">
+                        <div >
+                          <div class="mb-2 col-md-12">
+                            <label class="form-label">Nom <span class="text-danger">*</span> </label>
+                            <input required type="text" name="name" value="{{ $role->name }}"  id="name"   class="form-control form-control-md @error('name') is-invalid @enderror" style="border-color: #ccc;" onfocus="this.style.borderColor='#1e4db7'; this.style.boxShadow='0 0 0 0.2rem rgba(0, 123, 255, 0.25)';" onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';">
+                        </div>
+                      
+                          <div class="divider" style="width: 100%; display: flex; align-items: center; text-align: center; margin-top: 30px;">
+                            <div style="flex: 1; border-bottom: 1px solid #ccc;"></div>
+                            <div class="divider-text" style="margin: 0 10px;">Permissions</div>
+                            <div style="flex: 1; border-bottom: 1px solid #ccc;"></div>
+                          </div>
+                          
+                      
+                          <div class="permissions-container ps" style="margin-top: 30px;">
+                            @foreach ($permissions as $roleChunk)
+                              <div class="row m-0">
+                                @foreach ($roleChunk as $role)
+                                  <div class="col-md-3 mb-3">
+                                    <div class="form-group">
+                                      <input type="checkbox" class="form-check-input primary" name="permissions[]" value="{{ $role->id }}"
+                                      @if(in_array($role->id, $rolePermissions))
+                                  {{ 'checked=""' }} @endif />
+                                      <label class="form-check-label">{{ $role->name }}</label>
+                                    </div>
+                                  </div>
+                                @endforeach
+                              </div>
+                            @endforeach
 
                             
-                        
 
-                            <div class="mb-2 col-md-12">
-                                <label class="form-label">Nom <span class="text-danger">*</span> </label>
-                                <input required type="text" name="name" value="{{ $role->name }}"  id="name"  class="form-control form-control-sm @error('name') is-invalid @enderror" >
-                            </div>
+                         
+                          </div>
+                        </div>
+                      </div>
+                      
+                      
+                      
+                  
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-danger rounded-pill px-4 me-2" data-bs-dismiss="modal">
+                          Annuler
+                        </button>
+                        <button type="submit" class="btn btn-primary rounded-pill px-4">
+                          Valider
+                        </button>
+                      </div>
+                      
 
-                            <div class="divider">
-                                <div class="divider-text">Permissions</div>
-                            </div>
-
-
-
-                                            @foreach ($permissions as $roleChunk)
-                                                <div class="row m-0">
-                                                    @foreach ($roleChunk as $role)
-                                                        <div class="col-md-3">
-                                                            <div class="form-group">
-                                                                <input type="checkbox" name="permissions[]" value="{{ $role->id }}"
-                                                                @if(in_array($role->id, $rolePermissions))
-                                                            {{ 'checked' }} @endif />
-                                                            <label class="col-md-6 col-form-label">{{ $role->name }}</label>
-                                                            </div>
-                                                        </div>
-
-                                                    @endforeach
-                                                </div>
-                                            @endforeach
-                                       
-                                       
-
-                    
-
-
-                        <div class="ps__rail-x" style="left: 0px; bottom: -291px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 291px; height: 500px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 119px; height: 500px;"></div></div></div>
-                    </div>
                 </div>
-
-                <div class="modal-footer">
-                    <button type="reset" class="btn btn-label-secondary waves-effect mx-3" >Annuler</button>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">Valider</button>
-             
-                </div>
-            <form>
-            </div>
-
+              </div>
+              <form>
         </div>
     </div>
 
-</div>
 
+</div>
     
 
 
@@ -97,6 +89,7 @@
 
 
 @push('extra-js')
+
 
 
 @endpush

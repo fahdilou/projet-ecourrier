@@ -1,27 +1,38 @@
+
+
+@push('extra-button')
+
+<div class="
+                col-lg-4 col-md-6
+                d-none d-md-flex
+                align-items-center
+                justify-content-end
+              ">
+              
+              <button type="button" class="btn btn-primary waves-effect waves-light m-3 mb-md-0" data-bs-toggle="modal" data-bs-target="#addForm">
+                <span class="fas fa-user-plus me-1"></span>Ajouter un utilisateur
+            </button>
+            </div>
+
+
+@endpush
+
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('assets/libs/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+<!-- Icons -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/fonts/fontawesome.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/fonts/tabler-icons.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/fonts/flag-icons.css') }}" />
+
+
+<link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2/sweetalert2.css') }}" />
+<script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
 
 <div class="container-xxl flex-grow-1 container-p-y">
-
-<div class="row">
-    <div class="col">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Paramètres Systeme /</span> Utilisateurs</h4>
-    </div>
-
-    <div class="col text-end">
-        <div class="dt-buttons btn-group flex-wrap">
-            <button type="button" class="btn btn-primary waves-effect waves-light m-3 mb-md-0" data-bs-toggle="modal" data-bs-target="#addForm">
-                <span class="fas fa-user-plus me-1"></span>Ajouter un utilisateur
-            </button>
-        </div>
-    </div>
-
-</div>
-
-
-
 
 
     <!---------FIN BREADCRUMB------------------------------------------>
@@ -37,36 +48,32 @@
                     <div class="row">
                         <div class="col">
                             <h5 class="card-header">Liste des utilisateurs</h5>
+                         
+                            
                         </div>
-                        {{-- <div class="col text-end">
-                            <div class="dt-buttons btn-group flex-wrap">
-                                <button type="button" class="btn btn-primary waves-effect waves-light m-3 mb-md-0" data-bs-toggle="modal" data-bs-target="#addForm">
-                                    <span class="fas fa-user-plus me-1"></span>Ajouter un utilisateur
-                                </button>
-                            </div>
-                        </div> --}}
+                        
                     </div>
 
-                  
+               
 
                    
                     <div class="card-body">
 
-
-                        <table style="width: 100%;" class="table table-hover table-bordered">
-                            <thead class="table-light">
-                            <tr>
-                                <th>Nom</th>
-                                <th>Email</th>
-                                <th>Poste</th>
-                                <th>Droit</th>
-                                <th>Type</th>
-                                <th>Statut</th>
-                                <th>Options</th>
-                            </tr>
-                            </thead>
-                            <tbody >
-
+                        <div class="table-responsive"  >
+            
+                            <table id="users" class="table table-hover table-striped table-bordered  display  text-nowrap " >
+                              <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Email</th>
+                                    <th>Poste</th>
+                                    <th>Droit</th>
+                                    <th>Type</th>
+                                    <th>Statut</th>
+                                    <th>Options</th>
+                                </tr>
+                              </thead>
+                              <tbody>
                                 @foreach ($users as $item)
                                 <tr>
                                     <td>{{ $item->name }}</td>
@@ -93,15 +100,20 @@
 
                                     <td>
 
-                                        <button onclick="editModal({{ $item->id }})" type="button" class="btn-sm btn rounded-pill btn-icon btn-primary waves-effect waves-light">
-                                            <span class="ti ti-pencil"></span>
+                                        <button onclick="editModal({{ $item->id }})" type="button" class="btn btn-sm btn-info me-2" style="background: none; border: none;" >
+                                            <i class="fas fa-pencil-alt fa-lg text-primary"></i>
                                         </button>
+
+                                        
+                                        
+                                        <!-- Bouton Delete -->
+                                       
 
                                     
                                         @if ($item->email <> 'admin@admin.com' & $item->email != Auth::user()->email)
                                        
-                                        <button onclick="deleteModal({{ $item->id }})"  type="button" class="btn-sm btn rounded-pill btn-icon btn-danger waves-effect waves-light">
-                                            <span class="ti ti-trash"></span>
+                                        <button onclick="deleteModal({{ $item->id }})" type="button" class="btn btn-sm btn-info me-2" style="background: none; border: none;">
+                                            <i class="fas fa-trash-alt fa-lg text-danger"></i>
                                         </button>
                                         @endif
 
@@ -111,11 +123,10 @@
                                 </tr>
                                 @endforeach
 
-            
-                            </tbody>
-                         
-                        </table>
-                        
+                              </tbody>
+                              
+                            </table>
+                          </div>
 
                     </div>
                   
@@ -138,48 +149,26 @@
 
 
 <script>
-
-
-    //datatable
-    $(".table").DataTable({
-        order: [[0, 'asc']],
-        "scrollX": true,
-        "lengthChange": false,
-        "language": {
-            "lengthMenu": "Show _MENU_",
-        },
-        "oLanguage": {
-            "sUrl": "assets/plugins/datatable/french.json"
-        },
-        dom: `<'row'<'col-sm-2 text-left mb-3'B><'col-sm-10 text-right'f>>
-            <'row'<'col-sm-12'tr>>
-            <'row'<'col-sm-12 mt-3 col-md-5'i><'col-sm-12 mt-3 col-md-7 dataTables_pager'lp>>`,
-
-        buttons: [
-            'copyHtml5',
-            'excelHtml5',
-        ],
-    });  
-
-
-    // suppression
-    function deleteModal(id) {
-        Swal.fire({
-                title: "Voulez-vous supprimer l'élément ?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Oui ",
-                cancelButtonText: "Non !",
-            }).then(function(result) {
-                if (result.value) {
-                    window.location.href="{{url('users/delete')}}"+"/"+id;
-                    Swal.fire(
-                        "Suppression !",
-                        "En cours de traitement ...",
-                        "success"
-                    )
-                }
-            });
+// suppression
+          function deleteModal(id) {
+            Swal.fire({
+        title: "Voulez-vous supprimer l'élément ?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Oui",
+        confirmButtonColor: "blue",
+        cancelButtonText: "Non !",
+        cancelButtonColor: "red !",
+      }).then(function(result) {
+        if (result.value) {
+          window.location.href="{{url('users/delete')}}"+"/"+id;
+          Swal.fire(
+            "Suppression !",
+            "En cours de traitement ...",
+            "success"
+          )
+        }
+      });
     }
 
 
@@ -214,7 +203,28 @@
 
 </script>
 
-@include('layouts.partials.alert_js')
+
+
+<script src="{{ asset('assets/dist/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<!-- start - This is for export functionality only -->
+<script src="{{ asset('assets/dist/js/buttons/dataTables.buttons.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/js/buttons/buttons.flash.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/ajax/jszip/3.1.3/jszip.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/ajax/pdfmake/0.1.32/pdfmake.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/ajax/pdfmake/0.1.32/vfs_fonts-1.js') }}"></script>
+<script src="{{ asset('assets/dist/js/buttons/buttons.html5.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/js/buttons/buttons.print.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/js/pages/datatable/datatable-advanced.init.js') }}"></script>
+
+
+ <!-- This Page JS -->
+ <script src="{{ asset('assets/dist/libs/select2/dist/js/select2.full.min.js') }}"></script>
+ <script src="{{ asset('assets/dist/libs/select2/dist/js/select2.min.js') }}"></script>
+ <script src="{{ asset('assets/dist/js/pages/forms/select2/select2.init.js') }}"></script>
+
+
+
+
 <!----------------------Modal------------------------------------------>
 
 

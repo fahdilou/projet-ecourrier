@@ -110,8 +110,16 @@
 
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-label-secondary waves-effect" data-bs-dismiss="modal">Annuler</button>
-            <button type="submit" class="btn btn-primary waves-effect waves-light">Valider</button>
+                <button type="button" class="btn btn-danger rounded-pill px-4" data-bs-dismiss="modal">
+                    Annuler
+                  </button>
+                  
+                <button type="submit" class="btn btn-primary rounded-pill px-4">
+                    Valider
+                  </button>
+
+                 
+            
             </div>
         </div>
         </div>

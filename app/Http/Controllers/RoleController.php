@@ -23,11 +23,14 @@ class RoleController extends Controller
         return view('roles.index',compact('roles'));
     }
 
+
+   
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
 
      //formulaire de création un rôle
     public function create()

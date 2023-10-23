@@ -1,63 +1,75 @@
+
+
+@push('extra-button')
+
+<div class="
+                col-lg-4 col-md-6
+                d-none d-md-flex
+                align-items-center
+                justify-content-end
+              ">
+              
+              <a type="button" class="btn btn-primary waves-effect waves-light m-3 mb-md-0" href="{{ route('roles.create') }}">
+                <span class="fas fa-user-plus me-1"></span>Ajouter un rôle
+              </a>
+            </div>
+
+
+@endpush
+
 @extends('layouts.app')
 
 @section('content')
+<link href="{{ asset('assets/libs/select2/dist/css/select2.min.css') }}" rel="stylesheet" />
+<link href="{{ asset('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+<!-- Icons -->
+<link rel="stylesheet" href="{{ asset('assets/vendor/fonts/fontawesome.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/fonts/tabler-icons.css') }}" />
+<link rel="stylesheet" href="{{ asset('assets/vendor/fonts/flag-icons.css') }}" />
 
+
+<link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2/sweetalert2.css') }}" />
+<script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
 
 <div class="container-xxl flex-grow-1 container-p-y">
 
-    <div class="row">
-        <div class="col">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Paramètres Systeme /</span> Rôles & Permissions </h4>
-        </div>
-    
-        <div class="col text-end">
-            <div class="dt-buttons btn-group flex-wrap">
-                <a href="{{ route('roles.create') }}" type="button" class="btn btn-primary waves-effect waves-light m-3 mb-md-0" >
-                    <span class="fas fa-user-shield me-1"></span>Ajouter un rôle
-                </a>
-            </div>
-        </div>
-    
-    </div>
-    <!---------FIN BREADCRUMB------------------------------------------>
 
+    <!---------FIN BREADCRUMB------------------------------------------>
 
 
     <div class="d-flex flex-column-fluid">
         {{-- <div class="container-fluid" mettre conatiner-fluid pour plus de largeur > --}}
         <div class="container-fluid">
 
+            
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-header">Liste des rôles utilisateur</h5>
+                            <h5 class="card-header">Liste des rôles</h5>
+                            
                         </div>
-                        {{-- <div class="col text-end">
-                            <div class="dt-buttons btn-group flex-wrap">
-                                <button type="button" class="btn btn-primary waves-effect waves-light m-3 mb-md-0" data-bs-toggle="modal" data-bs-target="#addForm">
-                                    <span class="fas fa-user-plus me-1"></span>Ajouter un utilisateur
-                                </button>
-                            </div>
-                        </div> --}}
+                        
                     </div>
 
+               
 
+                   
                     <div class="card-body">
 
-
-                    
-                        <table style="width: 100%;" class="table table-hover table-bordered">
-                            <thead class="table-light">
-                            <tr>
-                                <th>Nom</th>
+                        <div class="table-responsive"  >
+                            
+                            <table id="roles" class="table table-hover table-striped table-bordered  display  text-nowrap " >
+                              <thead>
+                                <tr>
+                                  <th>Nom</th>
                                 
                                 <th>Options</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-
+                                </tr>
+                              </thead>
+                              <tbody>
+                              
                                 @foreach ($roles as $item)
                                 <tr>
                                     <td>{{ $item->name }}</td>
@@ -65,29 +77,29 @@
 
                                     <td>
 
-                                        <a href="{{ route('roles.show',$item->id) }}" type="button" class="btn-sm btn rounded-pill btn-icon btn-secondary waves-effect waves-light">
-                                            <span class="ti ti-eye"></span>
+                                        <a href="{{ route('roles.show',$item->id) }}" type="button"  class="btn btn-sm btn-info me-2" style="background: none; border: none;">
+                                            <span class="fas fa-eye fa-lg text-info"></span>
                                         </a>
 
-                                        <a  href="{{ route('roles.edit',$item->id) }}" type="button" class="btn-sm btn rounded-pill btn-icon btn-primary waves-effect waves-light">
-                                            <span class="ti ti-pencil"></span>
+                                        <a  href="{{ route('roles.edit',$item->id) }}" type="button" class="btn btn-sm btn-info me-2" style="background: none; border: none;">
+                                            <span class="fas fa-pencil-alt fa-lg text-primary"></span>
                                         </a>
 
-                                        <button onclick="deleteModal({{ $item->id }})"  type="button" class="btn-sm btn rounded-pill btn-icon btn-danger waves-effect waves-light">
-                                            <span class="ti ti-trash"></span>
+
+                                        <button onclick="deleteModal({{ $item->id }})"  type="button" class="btn btn-sm btn-info me-2" style="background: none; border: none;">
+                                            <span class="fas fa-trash-alt fa-lg text-danger"></span>
                                         </button>
 
-                                        
+                                                                               
                                        
                                     </td>
                                 </tr>
                                 @endforeach
 
-            
-                            </tbody>
-                         
-                        </table>
-                        
+                              </tbody>
+                              
+                            </table>
+                          </div>
 
                     </div>
                   
@@ -98,36 +110,19 @@
     </div>
 
 
+
 </div>
-    
 
 
 @endsection
 
 
-
+<!-------------------Extra Js--------------------------------------->
 @push('extra-js')
+
+  
+
 <script>
-
-$(".table").DataTable({
-    order: [[0, 'asc']],
-    "scrollX": true,
-    "lengthChange": false,
-    "language": {
-        "lengthMenu": "Show _MENU_",
-    },
-    "oLanguage": {
-        "sUrl": "assets/plugins/datatable/french.json"
-    },
-    dom: `<'row'<'col-sm-2 text-left'B><'col-sm-10 text-right'f>>
-          <'row'<'col-sm-12'tr>>
-          <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
-
-    buttons: [
-        'copyHtml5',
-        'excelHtml5',
-    ],
-});
 
 
 function deleteModal(id) {
@@ -150,13 +145,41 @@ function deleteModal(id) {
         }
 
 
-
 </script>
 
+
+
+<script src="{{ asset('assets/dist/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<!-- start - This is for export functionality only -->
+<script src="{{ asset('assets/dist/js/buttons/dataTables.buttons.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/js/buttons/buttons.flash.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/ajax/jszip/3.1.3/jszip.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/ajax/pdfmake/0.1.32/pdfmake.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/ajax/pdfmake/0.1.32/vfs_fonts-1.js') }}"></script>
+<script src="{{ asset('assets/dist/js/buttons/buttons.html5.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/js/buttons/buttons.print.min-1.js') }}"></script>
+<script src="{{ asset('assets/dist/js/pages/datatable/datatable-advanced.init.js') }}"></script>
+
+
+ <!-- This Page JS -->
+ <script src="{{ asset('assets/dist/libs/select2/dist/js/select2.full.min.js') }}"></script>
+ <script src="{{ asset('assets/dist/libs/select2/dist/js/select2.min.js') }}"></script>
+ <script src="{{ asset('assets/dist/js/pages/forms/select2/select2.init.js') }}"></script>
+ <script src="{{ asset('assets/plugins/datatable/french.json') }}"></script>
+
+
+
+<!----------------------Modal------------------------------------------>
+
+
+@include('users.create')
+
+@include('users.edit')
+
+
+
+
 @endpush
 
 
-@push('extra-modal')
 
-
-@endpush

@@ -23,6 +23,7 @@ class UserController extends Controller
         return view('users.index',compact('users','roles'));
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -32,6 +33,14 @@ class UserController extends Controller
     {
         //modifier mon profil utilisateur
         return view('users.myprofil');
+    }
+
+    public function test()
+    {
+       //pour lister les utilisateurs
+       $users = User::all();
+       $roles = Role::all();
+       return view('users.test',compact('users','roles'));
     }
 
     public function myprofil_update(Request $request){
@@ -54,6 +63,7 @@ class UserController extends Controller
           return back()->with('error', "Échec de l'enregistrement ! " .$ex->getMessage());
         }
     }
+
 
 
 
@@ -140,6 +150,8 @@ class UserController extends Controller
         return response()->json($data);
     }
 
+    
+
     /**
      * Update the specified resource in storage.
      *
@@ -186,6 +198,7 @@ class UserController extends Controller
         }
   
 
+        
     }
 
     /**

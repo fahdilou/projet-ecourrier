@@ -1,270 +1,182 @@
-<nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-id="layout-navbar">
-
-<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
-    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-        <i class="ti ti-menu-2 ti-sm"></i>
-    </a>
-</div>
-
-
-<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-
-
-    <ul class="navbar-nav flex-row align-items-center ms-auto">
-
-
-        {{-- <!-- Notification -->
-        <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
-          <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-            <i class="ti ti-bell ti-md"></i>
-            <span class="badge bg-danger rounded-pill badge-notifications">5</span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end py-0">
-            <li class="dropdown-menu-header border-bottom">
-              <div class="dropdown-header d-flex align-items-center py-3">
-                <h5 class="text-body mb-0 me-auto">Notification</h5>
-                <a href="javascript:void(0)" class="dropdown-notifications-all text-body" data-bs-toggle="tooltip" data-bs-placement="top" title="Mark all as read"><i class="ti ti-mail-opened fs-4"></i></a>
-              </div>
-            </li>
-            <li class="dropdown-notifications-list scrollable-container">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar">
-                        <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="h-auto rounded-circle">
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <h6 class="mb-1">Congratulation Lettie 🎉</h6>
-                      <p class="mb-0">Won the monthly best seller gold badge</p>
-                      <small class="text-muted">1h ago</small>
-                    </div>
-                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                      <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                      <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar">
-                        <span class="avatar-initial rounded-circle bg-label-danger">CF</span>
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <h6 class="mb-1">Charles Franklin</h6>
-                      <p class="mb-0">Accepted your connection</p>
-                      <small class="text-muted">12hr ago</small>
-                    </div>
-                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                      <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                      <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar">
-                        <img src="{{ asset('assets/img/avatars/2.png') }}" alt class="h-auto rounded-circle">
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <h6 class="mb-1">New Message ✉️</h6>
-                      <p class="mb-0">You have new message from Natalie</p>
-                      <small class="text-muted">1h ago</small>
-                    </div>
-                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                      <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                      <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar">
-                        <span class="avatar-initial rounded-circle bg-label-success"><i class="ti ti-shopping-cart"></i></span>
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <h6 class="mb-1">Whoo! You have new order 🛒 </h6>
-                      <p class="mb-0">ACME Inc. made new order $1,154</p>
-                      <small class="text-muted">1 day ago</small>
-                    </div>
-                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                      <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                      <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar">
-                        <img src="{{ asset('assets/img/avatars/9.png') }}" alt class="h-auto rounded-circle">
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <h6 class="mb-1">Application has been approved 🚀 </h6>
-                      <p class="mb-0">Your ABC project application has been approved.</p>
-                      <small class="text-muted">2 days ago</small>
-                    </div>
-                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                      <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                      <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar">
-                        <span class="avatar-initial rounded-circle bg-label-success"><i class="ti ti-chart-pie"></i></span>
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <h6 class="mb-1">Monthly report is generated</h6>
-                      <p class="mb-0">July monthly financial report is generated </p>
-                      <small class="text-muted">3 days ago</small>
-                    </div>
-                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                      <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                      <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar">
-                        <img src="{{ asset('assets/img/avatars/5.png') }}" alt class="h-auto rounded-circle">
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <h6 class="mb-1">Send connection request</h6>
-                      <p class="mb-0">Peter sent you connection request</p>
-                      <small class="text-muted">4 days ago</small>
-                    </div>
-                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                      <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                      <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item list-group-item-action dropdown-notifications-item">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar">
-                        <img src="{{ asset('assets/img/avatars/6.png') }}" alt class="h-auto rounded-circle">
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <h6 class="mb-1">New message from Jane</h6>
-                      <p class="mb-0">Your have new message from Jane</p>
-                      <small class="text-muted">5 days ago</small>
-                    </div>
-                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                      <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                      <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
-                    </div>
-                  </div>
-                </li>
-                <li class="list-group-item list-group-item-action dropdown-notifications-item marked-as-read">
-                  <div class="d-flex">
-                    <div class="flex-shrink-0 me-3">
-                      <div class="avatar">
-                        <span class="avatar-initial rounded-circle bg-label-warning"><i class="ti ti-alert-triangle"></i></span>
-                      </div>
-                    </div>
-                    <div class="flex-grow-1">
-                      <h6 class="mb-1">CPU is running high</h6>
-                      <p class="mb-0">CPU Utilization Percent is currently at 88.63%,</p>
-                      <small class="text-muted">5 days ago</small>
-                    </div>
-                    <div class="flex-shrink-0 dropdown-notifications-actions">
-                      <a href="javascript:void(0)" class="dropdown-notifications-read"><span class="badge badge-dot"></span></a>
-                      <a href="javascript:void(0)" class="dropdown-notifications-archive"><span class="ti ti-x"></span></a>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <li class="dropdown-menu-footer border-top">
-              <a href="javascript:void(0);" class="dropdown-item d-flex justify-content-center text-primary p-2 h-px-40 mb-1 align-items-center">
-                View all notifications
-              </a>
-            </li>
-          </ul>
-        </li>
-        <!--/ Notification --> --}}
-
-        <!-- User -->
-        <li class="nav-item navbar-dropdown dropdown-user dropdown">
-            <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                data-bs-toggle="dropdown">
-                <div class="avatar avatar-online">
-                    <img src="{{ asset('assets/img/avatars/blank.png') }}" alt
-                        class="h-auto rounded-circle">
-                </div>
+<!-- Topbar header - style you can find in pages.scss -->
+      <!-- ============================================================== -->
+      <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-lg navbar-dark">
+          <div class="navbar-header">
+            <!-- This is for the sidebar toggle which is visible on mobile only -->
+            <a
+              class="nav-toggler waves-effect waves-light d-block d-lg-none"
+              href="javascript:void(0)"
+              ><i class="ri-close-line ri-menu-2-line fs-6"></i
+            ></a>
+            <!-- ============================================================== -->
+            <!-- Logo -->
+            <!-- ============================================================== -->
+            <a class="navbar-brand" href="{{route('home')}}">
+              <!-- Logo icon -->
+              <b class="logo-icon">
+                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                <!-- Dark Logo icon -->
+                <img
+                  src="{{ asset('assets/images/logo-news.png') }}"
+                  alt="homepage"
+                  class="dark-logo" style="margin-right: -23px"
+                />
+                <!-- Light Logo icon -->
+                <img
+                  src="{{ asset('assets/images/logo-light-icon.png') }}"
+                  alt="homepage"
+                  class="light-logo"
+                />
+              </b>
+              <!--End Logo icon -->
+              <!-- Logo text -->
+              <span class="logo-text">
+                <!-- dark Logo text -->
+                <img
+                  src="{{ asset('assets/images/logo-texts.png') }}"
+                  alt="homepage"
+                  class="dark-logo"
+                />
+                <!-- Light Logo text -->
+                <img
+                  src="{{ asset('assets/images/logo-light-text.png') }}"
+                  class="light-logo"
+                  alt="homepage"
+                />
+              </span>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li>
-                    <a class="dropdown-item" href="#">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0 me-3">
-                                <div class="avatar avatar-online">
-                                    <img src="{{ asset('assets/img/avatars/blank.png') }}" alt
-                                        class="h-auto rounded-circle">
-                                </div>
-                            </div>
-                            <div class="flex-grow-1">
-                                <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
-                                <small class="text-muted">{{ Auth::user()->poste }}</small>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <div class="dropdown-divider"></div>
-                </li>
-
-                <li>
-                    <a class="dropdown-item" href="{{ route('myprofil.index') }}">
-                        <i class="ti ti-user-check me-2 ti-sm"></i>
-                        <span class="align-middle">Mon Profil</span>
-                    </a>
-                </li>
-
-
-                <li>
-                    <div class="dropdown-divider"></div>
-                </li>
-
-                <li>
-                    <a class="dropdown-item"
-                        onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                        <i class="ti ti-logout me-2 ti-sm"></i>
-                        <span class="align-middle">Déconnexion</span>
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                        class="d-none">
-                        @csrf
-                    </form>
-
-
-                </li>
+            <!-- ============================================================== -->
+            <!-- End Logo -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Toggle which is visible on mobile only -->
+            <!-- ============================================================== -->
+            <a
+              class="topbartoggler d-block d-lg-none waves-effect waves-light"
+              href="javascript:void(0)"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              ><i class="ri-more-line fs-6"></i
+            ></a>
+          </div>
+          <!-- ============================================================== -->
+          <!-- End Logo -->
+          <!-- ============================================================== -->
+          <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            <!-- ============================================================== -->
+            <!-- toggle and nav items -->
+            <!-- ============================================================== -->
+            <ul class="navbar-nav me-auto">
+              <!-- This is  -->
+              <!-- <li class="nav-item"> <a
+                                  class="nav-link sidebartoggler d-none d-md-block"
+                                  href="javascript:void(0)"><i data-feather="menu"></i></a> </li> -->
+              <!-- search -->
+              
             </ul>
-        </li>
-        <!--/ User -->
+            <!-- ============================================================== -->
+            <!-- Right side toggle and nav items -->
+            <!-- ============================================================== -->
+            <ul class="navbar-nav">
+           
+              <!-- ============================================================== -->
+            
+              
+              <!-- ============================================================== -->
+              <!-- Profile -->
+              <!-- ============================================================== -->
+                            <!-- dropdown css -->
+                           
+                          
+                            
 
 
-
-    </ul>
-</div>
-</nav>
+              <li class="nav-item dropdown profile-dropdown">
+                <a
+                  class="nav-link dropdown-toggle d-flex align-items-center"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  id="dropdownMenuButton"
+                >
+                  <img
+                    src="{{ asset('assets/img/avatars/blank.png') }}"
+                    alt="user"
+                    width="30"
+                    class="profile-pic rounded-circle"
+                  />
+                  <div class="d-none d-md-flex">
+                    <span class="ms-2"
+                      >Salut,
+                      <span class="text-dark fw-bold">{{ Auth::user()->name }}</span></span
+                    >
+                    <span>
+                      <i data-feather="chevron-down" class="feather-sm"></i>
+                    </span>
+                  </div>
+                </a>
+                <div
+                  class="
+                    dropdown-menu dropdown-menu-end
+                    mailbox
+                    dropdown-menu-animate-up
+                  " style="max-width: 330px;"
+                >
+                <ul class="list-style-none">
+                  <li class="p-30 pb-2">
+                      <div class="rounded-top d-flex align-items-center">
+                          <h3 class="card-title mb-0">Profil utilisateur</h3>
+                          <div class="ms-auto">
+                              <a href="javascript:void(0)" class="link py-0">
+                                  <i data-feather="x-circle"></i>
+                              </a>
+                          </div>
+                      </div>
+                      <div class="d-flex flex-column flex-md-row align-items-center mt-4 pt-3 pb-4 border-bottom">
+                          <img src="{{ asset('assets/img/avatars/blank.png') }}" alt="user" width="90" class="rounded-circle mb-3 mb-md-0 me-md-4" />
+                          <div class="ms-md-4">
+                              <h4 class="mb-0">{{ Auth::user()->name }}</h4>
+                              <span class="text-muted">{{ Auth::user()->poste }}</span>
+                              <p class="text-muted mb-0 mt-1">
+                                  <i data-feather="mail" class="feather-sm me-1"></i>
+                                  {{ Auth::user()->email }}
+                              </p>
+                          </div>
+                      </div>
+                  </li>
+                  <li class="p-30 pt-0">
+                      <div class="message-center message-body position-relative" style="height: 150px">
+                          <!-- Message -->
+                          <a href="{{ route('myprofil.index') }}" class="message-item px-2 d-flex align-items-center border-bottom py-3">
+                              <span class="btn btn-light-secondary btn-rounded-lg text-secondary">
+                                <i class="fa-solid fa-gear"></i>
+                              </span>
+                              <div class="w-75 d-inline-block v-middle ps-3 ms-1">
+                                  <h5 class="message-title mb-0 mt-1 fs-4 font-weight-medium">
+                                      Paramètre du compte
+                                  </h5>
+                              </div>
+                          </a>
+                          <div class="mt-4">
+                              <a onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary text-white" href="javascript:void(0);">Déconnexion</a>
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                  @csrf
+                              </form>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+              
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- ============================================================= -->
+      <!-- End Topbar header -->

@@ -1,7 +1,13 @@
 
+
+  
+
 @if(session()->has('success'))
+
 <script>
-    toastr.success('{{ session('success') }}');
+    toastr.success('{{ session('success') }}',  { showMethod: "fadeIn", hideMethod: "fadeOut", timeOut: 2000 });
+    
+      
 </script>
 @endif
 

@@ -20,22 +20,12 @@ class SoucheSeeder extends Seeder
 
             [
        
-                'last_souche' => 'ENTREE-01/23-0',
-                'prefix' => 'ENTREE',
-                'type' => 'Ticket_entrer',
+                'last_souche' => '4496',
                
     
             ],
 
-            [
-       
-                'last_souche' => 'SORTIE-01/23-0',
-                'prefix' => 'SORTIE',
-                'type' => 'Ticket_sortie',
-               
-    
-            ]
-
+            
            
         ]);
     }
