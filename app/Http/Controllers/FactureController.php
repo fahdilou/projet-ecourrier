@@ -420,7 +420,7 @@ return DataTables::eloquent($query)
 
 ->addColumn('date_enregistrement', function ($facture) use ($workflows) {
     $etatfacture = EtatFacture::where('facture_id', $facture->id)
-        ->where('workflow_id', $workflows) /
+        ->where('workflow_id', $workflows) 
         ->first();
 
     if ($etatfacture && $etatfacture->date_entree && $etatfacture->date_entree != '1970-01-01') {
